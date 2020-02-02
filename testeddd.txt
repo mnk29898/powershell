@@ -1,0 +1,49 @@
+﻿Cls
+Write-Host "1. View all Creadted AD Users
+2.Create a New AD User
+3.Create a Security Group
+4.Add Users to Security Group
+5.Add Users from Excell File"
+$choice=Read-Host "Enter your choice"
+if($choice -in 1,2,3,4,5)
+{
+Switch($choice)
+{
+1
+{
+Get-ADUser -Filter ' UserPrincipalName -like "*@nanda.com" '|Format-Table Name,UserPrincipalName
+}
+2
+{
+New-ADUser -Name ($nm=Read-Host "enter name") -GivenName ($nm) -AccountPassword (Read-Host -AsSecureString "enter password") -City (Read-Host "enter city") -Company (Read-Host "enter company name") -UserPrincipalName ($nm+"@nanda.com")
+}
+3
+{
+New-ADGroup -Name ($gn=Read-Host "enter group name") -GroupScope (Read-Host "enter scope of group") -GroupCategory (Read-Host "enter category of group")
+}
+4
+{
+$idm=$id=Get-ADUser -Filter ' UserPrincipalName -like "*@nanda.com" '
+Add-ADGroupMember -Identity ($gn) -Members ($idm.GivenName)
+Write-Host "Added successfully to the Security Group"
+}
+5
+{
+$collection=Import-Csv C:\Users\Administrator\Desktop\data.csv
+foreach($item in $collection)
+{
+Write-Host "These are the users added from the Excell File"
+Write-Host $item.Name
+New-ADUser -Name ($item.Name) -GivenName ($item.Name) -AccountPassword (ConvertTo-SecureString $item.Password-AsPlainText -Force) -City ($item.City) -Company ($item.Company)
+}
+}
+Default
+{
+Write-Host "End of script"
+}
+}
+}
+else
+{
+Write-Host "Entered ivalid Choice"
+}
