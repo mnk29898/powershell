@@ -1,0 +1,175 @@
+ Id CommandLine
+ -- -----------
+  1 Get-Command
+  2 Get-Help about_commanoperators
+  3 Get-Help about_CommonParameters
+  4 Get-Command *import*
+  5 Get-Service
+  6 Get-Process
+  7 Get-Help Get-Event
+  8 Get-Event
+  9 Get-Help *help*
+ 10 Update-Help
+ 11 Get-Help Get-EventLog
+ 12 Get-EventLog
+ 13 Get-Command *history*
+ 14 Get-History
+ 15 Get-Command -Verb install
+ 16 Get-Command -Verb add
+ 17 Get-Command -Verb update
+ 18 Get-Command -Verb test
+ 19 Get-Command -Noun csv
+ 20 Get-Command -Noun windows
+ 21 Get-Command -Noun *windows*
+ 22 Get-Help Get-EventLog
+ 23 Get-Help Get-EventLog -Parameter logname
+ 24 Get-Help Get-EventLog -Parameter logname -Examples
+ 25 Get-Help Get-EventLog -Parameter instanceid
+ 26 Get-EventLog -LogName Application
+ 27 Get-EventLog -LogName Application -Newest 10
+ 28 Get-Service
+ 29 Get-Service -DisplayName windows*
+ 30 Get-Service -Name *r*
+ 31 Get-EventLog -LogName Application -EntryType Error -Newest 10
+ 32 get-process
+ 33 get-process|gm
+ 34 Get-EventLog -LogName Application -After 16:00 -Before 17:30
+ 35 Get-EventLog -LogName Application -After 01/31/20 08:00 -Before 02/01/20 06:30
+ 36 Get-EventLog -LogName Application -After "01/31/20 08:00" -Before "02/01/20 06:30"
+ 37 Get-EventLog -LogName Application -After "01/31/2020 08:00" -Before "02/01/2020 06:30"
+ 38 Get-EventLog -LogName Application -After "01/01/2020 08:00" -Before "02/01/2020 06:30"
+ 39 Get-EventLog -LogName Application -After "jan/01/2020 08:00" -Before "feb/01/2020 06:30"
+ 40 Get-EventLog -LogName Application -After "jan-01-2020 08:00" -Before "feb-01-2020 06:30"
+ 41 Get-EventLog -LogName Application -After "01-01-2020 08:00" -Before "02-01-2020 06:30"
+ 42 Get-EventLog -LogName Application -After "01-01-2020 08:00" -Before "02-01-2020 06:30" -Newest 10
+ 43 Get-Help about_Operators
+ 44 Get-Help Where-Object
+ 45 Get-Service|fl *
+ 46 Get-Service -status *running*
+ 47 Get-Service |Where-Object{$_. Status -eq "running"}
+ 48 Get-Service |Where-Object{$_. Status -eq "running"} -newest 10
+ 49 Get-Service -newest 50 |Where-Object{$_. Status -eq "running"}
+ 50 Get-Service -Newest 50
+ 51 Get-Service
+ 52 Get-Help Get-Service
+ 53 Get-Help Get-Service -Examples
+ 54 Get-Help automatic_variables
+ 55 Get-Help about_operators
+ 56 Get-Help about_compaison_operators
+ 57 Get-Help about_comparison_operators
+ 58 $PSVersionTable
+ 59 $PSVersionTable|psversion
+ 60 $PSVersionTable
+ 61 $PSVersionTable -psversion
+ 62 $PSVersionTable | ft psversion
+ 63 $PSVersionTable | Select-Object psversion
+ 64 Get-EventLog -LogName Application | Where-Object{$_. Index -eq 1080}
+ 65 Get-EventLog -LogName Application | Where-Object{$_. Index -eq '1080'}
+ 66 Get-EventLog -LogName Application | Where-Object{$_. Index -eq 108}
+ 67 Get-Service | Where-Object{$_. DisplayName -eq 'windows update'}
+ 68 Get-EventLog -LogName Application -Newest 2000 | Where-Object{$_. EntryType -eq 'error'}
+ 69 Get-EventLog -LogName Application -Newest 2000  -sort | Where-Object{$_. EntryType -eq 'error'}
+ 70 Get-EventLog -LogName Application -Newest 2000  | Where-Object{$_. EntryType -eq 'error'}|Sort-Object
+ 71 Get-EventLog -LogName Application -Newest 2000  | Where-Object{$_. EntryType -eq 'error'}|Sort-Object Index
+ 72 Get-Command *hot*
+ 73 Get-HotFix
+ 74 Get-HotFix | Where-Object{$_. Description -eq 'security update'}
+ 75 Get-HotFix | Where-Object{$_. Description -eq 'update'}
+ 76 Get-Help about_comparision_operatorrs
+ 77 Get-Help about_comparison_operatorrs
+ 78 Get-Help about_comparison_operators
+ 79 Get-Service | Where-Object{$_. Status -ne 'running'}
+ 80 Get-HotFix | Where-Object{$_. handles -gt 1000}
+ 81 Get-HotFix | Where-Object{$_. handles -gt 500}
+ 82 Get-HotFix | Where-Object{$_. handles -gt 200}
+ 83 Get-HotFix | Where-Object{$_. handles -gt 100}
+ 84 Get-HotFix | Where-Object{$_. handles -gt 10}
+ 85 Get-HotFix
+ 86 Get-HotFix  | fl *
+ 87 Get-HotFix  |Format-Table handles
+ 88 Get-HotFix  |Select-Object handles
+ 89 Get-Process | Where-Object{$_. Handles -gt 1000}
+ 90 Get-Process | Where-Object{$_. Handles -gt 1000} | Sort-Object Handles
+ 91 Get-Process | Where-Object{$_. Handles -lt 100} | Sort-Object Handles
+ 92 Get-EventLog | Where-Object{$_. TimeGenerated -gt 16:00}
+ 93 Get-EventLog | Where-Object{$_. TimeGenerated -gt '16:00'}
+ 94 Get-EventLog -LogName Application -Newest 2
+ 95 Get-EventLog -LogName Application -Newest 2 | fl *
+ 96 Get-EventLog -LogName Application | Where-Object{$_. Index -gt 1000} | Sort-Object Index
+ 97 Get-EventLog -LogName Application | Where-Object{$_. Index -gt 100} | Sort-Object Index
+ 98 Get-Service | Where-Object{$_. DisplayName -like 'windows*'}
+ 99 Get-Service | Where-Object{$_. DisplayName -like 'windows*' -and $_. Status -eq 'running'}
+100 Get-Service | Where-Object{$_. DisplayName -eq 'windows*' -and $_. Status -eq 'running'}
+101 Get-Process | Where-Object($_. name -like '*host*'}
+102 Get-Process | Where-Object{$_. Name -like '*host*'}
+103 Get-Process | Where-Object{$_. Name -like '*host*'} | Sort-Object  Handles
+104 Get-HotFix | Where-Object{$_. InstalledOn -gt '01/31/2020'}
+105 Get-HotFix | Where-Object{$_. hotfixid -like 'kb2*'}
+106 Get-Service | Where-Object{$_. DisplayName -match 'remote'}
+107 Get-Service | Where-Object{$_. DisplayName -eq 'remote'}
+108 Get-Service | Where-Object{$_. DisplayName -like 'remote'}
+109 (Get-Command).count
+110 Get-Help about_Logical_Operators
+111 Get-Service | Where-Object{$_. Status -eq 'running' -and $_. DisplayName -like 'windows*'}
+112 Get-Process | Where-Object{$_. Handles -gt 500 - and $_. handles -lt 1000} | Sort-Object Handles
+113 Get-Process | Where-Object{$_. Handles -gt 500 -and $_. handles -lt 1000} | Sort-Object Handles
+114 Get-Process -Name *internet*
+115 Get-Process -Name *exp*
+116 Get-Process | Where-Object{$_. Handles -gt 500 -and $_. Name -like 'explorer*'} | Sort-Object Handles
+117 Get-EventLog -LogName Application | Where-Object{$_. EntryType -eq 'information' -and $_. Source -like '*micros...
+118 Get-EventLog -LogName Application | Where-Object{$_. EntryType -eq 'information' -and $_. Source -like '*micros...
+119 (Get-EventLog -LogName Application | Where-Object{$_. EntryType -eq 'information' -and $_. Source -like '*micro...
+120 Get-EventLog -LogName Application | Where-Object{$_. TimeGenerated -gt '01/31/2020 08:00' -and $_. TimeGenerate...
+121 Get-EventLog -LogName Application | Where-Object{$_. TimeGenerated -gt '01/01/2020 00:00' -and ($_. TimeGenerat...
+122 Get-EventLog -LogName Application | Where-Object{$_. TimeGenerated -gt '01/01/2020 00:00' -and ($_. TimeGenerat...
+123 Get-Service | Where-Object{$_. DisplayName -like 'windows*' -or $_. DisplayName -like '*remote*'}
+124 Get-Process | Where-Object{$_. Name -like 'explorer*' -or $_. Name -like 'notepad*'}
+125 Get-Process | Where-Object{$_. Name -like 'explorer*' -or $_. Name -like 'notepad*'}
+126 Get-Process | Where-Object{$_. Handles -gt 500 -and $_. Handles -lt 1000 -or $_. Name -like 'explorer*'}
+127 Get-Process | Where-Object{$_. Handles -gt 500 -and $_. Handles -lt 1000 -and $_. Name -like 'explorer*'}
+128 Get-Process | Where-Object{$_. Handles -gt 500 -and $_. Handles -lt 1200 -and $_. Name -like 'explorer*'}
+129 Get-Process | Where-Object{$_. Handles -gt 100 -xor $_. Handles -lt 2000}
+130 Get-Command *format*
+131 Get-Help Format-Table
+132 Get-Service | Format-Table DisplayName,Status
+133 Get-Process | Where-Object{$_. Handles -gt 700 -and $_. Handles -lt 1000} | Format-Table Handles,ProcessName
+134 Get-Service | Format-Table *
+135 Get-Service | Format-Table Status,can*
+136 Get-Service | Format-Table processname,Status,can*
+137 Get-Service | Format-Table Name,Status,can*
+138 Get-Service | Format-List
+139 Get-Service | Format-List *
+140 Get-Help Format-Table -Examples
+141 Get-Service | Format-Table @{Label='service status'; Expression={$_. Status}},@{label='dis name'; expression={$...
+142 Get-Process | Where-Object{$_. Handles -gt 500 -and $_. Handles -lt 1000} | Sort-Object Handles -Descending
+143 Get-Service | Where-Object{$_. DisplayName -like 'windows*'} | Sort-Object Status | ft Status,DisplayName,start...
+144 Get-Service | Where-Object{$_. DisplayName -like 'windows*'} | Sort-Object Status | ft Status,DisplayName,Start...
+145 Get-Service | Where-Object{$_. DisplayName -like 'windows*'} | Sort-Object Status | ft Status,DisplayName,Servi...
+146 Get-Help Get-Service -Examples
+147 Get-Service | Sort-Object
+148 Get-Process | fl *
+149 Get-Help about_Execution_Policies
+150 Get-Command *execution policy*
+151 Get-Command *executionpolicy*
+152 Get-ExecutionPolicy
+153 Get-Command *write*
+154 Get-Help Write-Host
+155 write-host 'hello this is nanda'
+156 write-host 'hello this is nanda' -BackgroundColor yellow -ForegroundColor blue
+157 Get-Help Write-Output
+158 Get-Help Write-Output -Examples
+159  Write-Output @(1,2,3,4,5) | measure
+160 Get-Command *read*
+161 Get-Help Read-Host -Examples
+162 $tst1 = Read-Host 'enter an text to display'
+163 $tst1
+164 Read-Host "enter password"
+165 Read-Host "enter password" -AsSecureString
+166 $pass=Read-Host "enter password" -AsSecureString
+167 $pass
+168 Read-Host
+169 Get-Command *credential*
+170 Get-Credential
+171 get-help Get-Credential
+172 get-help Get-Credential -Examples
+173 $MaximumHistoryCount
